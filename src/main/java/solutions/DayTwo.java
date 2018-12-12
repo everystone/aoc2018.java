@@ -2,7 +2,6 @@ package solutions;
 
 import common.FileUtils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +16,7 @@ public class DayTwo {
     return Arrays.stream(src).filter(l -> l.equals(c)).count();
   }
   public static void main(String[] args) {
-    String[] lines = FileUtils.ReadLines("./puzzles/day2.txt");
+    String[] lines = FileUtils.readLines("./puzzles/day2.txt");
 
     // count number of line that have exactly 2 character duplicates.
     long twoCount = Arrays.stream(lines).filter(line -> line.chars()

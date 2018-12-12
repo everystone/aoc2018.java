@@ -32,7 +32,7 @@ class Frequencer implements IntConsumer {
 public class DayOne {
 
   public static void main(String[] args) {
-    String[] lines = FileUtils.ReadLines("./puzzles/day1.txt");
+    String[] lines = FileUtils.readLines("./puzzles/day1.txt");
 
     int part1 = Arrays.stream(lines)
       .mapToInt(Integer::parseInt) // e -> Integer.parseInt(e)

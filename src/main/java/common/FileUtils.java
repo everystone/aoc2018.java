@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public class FileUtils {
 
-  public static String[] ReadLines(String fileName) {
+  public static String[] readLines(String fileName) {
 
     //read file into stream
     try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
