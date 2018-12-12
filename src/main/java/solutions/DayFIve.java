@@ -9,6 +9,7 @@ public class DayFIve {
   static String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
 
   public static void main(String[] args) {
+    long startTime = System.currentTimeMillis();
     var polymers = FileUtils.readLines("./puzzles/day5.txt")[0];
 
     var part1 = react("", polymers);
@@ -20,6 +21,7 @@ public class DayFIve {
       .findFirst();
 
     System.out.println("Part 2: " + part2);
+    System.out.println("Done ine " + (System.currentTimeMillis() - startTime) + " ms");
   }
 
   private static int react(String letter, String data) {
