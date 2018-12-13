@@ -1,52 +1,33 @@
 package solutions;
 
 import common.FileUtils;
+import common.Step;
+import common.StepContainer;
 
 import java.util.Arrays;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 
-class Step implements Comparable {
-  char A;
-  char B;
-  Step(String line) {
-    A = line.charAt(5);
-    B = line.charAt(36);
-  }
-
-  @Override
-  public String toString() {
-    return String.format("%s -> %s", Character.toString(A), Character.toString(B));
-  }
-
-  @Override
-  public int compareTo(Object o) {
-    Step other = (Step)o;
-    if (other.A == this.B) {
-      return -1;
-    }
-    if (other.B == this.A) {
-      return 1;
-    }
-    return 0;
-  }
-}
 public class DaySeven {
-
-
 
   public static void main(String[] args) {
     String[] lines = FileUtils.readLines("./puzzles/day7.txt");
 
+    // TODO: loop entire list for every step to create rules.
 
-    // TODO: loop entiry thing for every step to create rules.
-    var result = Arrays.stream(lines)
+    var steps = Arrays.stream(lines)
       .map(Step::new)
+      .collect(groupingBy(step -> step.A));
+    // steps: {A=[B, C], C=[B], D=[F, H, O, C, P], E=[C, W, Z, O, S], F=[E], G=[T], H=[R, Z, C], I=[C, U, Z]
+
+    steps.entrySet().stream()
+    .map(StepContainer::new)
       .sorted()
-      .map(s -> s.A)
-      .map(Object::toString)
-      .collect(Collectors.joining(""));
-    System.out.println(result);
+      //.map(e -> e.Value)
+      //.map(Object::toString)
+      //.collect(Collectors.joining("")); // ADFECGNPHJIKLMVROQUSTXYZW
+   .forEach(System.out::println);
 
 
   }
